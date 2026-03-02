@@ -1,0 +1,60 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Retail Banking - New Account Opening Status for the Customer",
+        "version": "1.0.0",
+        "description": "APIs for determining the new account opening status based on AccountID and reason pending status"
+    },
+    "paths": {
+        "/newBankAccountStatus": {
+            "get": {
+                "summary": "Get a new account opening status for a customer",
+                "description": "Get the account opening status based on the provided AccountID.",
+                "operationId": "getAllOpenAccountStatus",
+                "parameters": [
+                    {
+                        "name": "AccountID",
+                        "in": "query",
+                        "description": "The account ID of the customer looking for status",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response containing account status details",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "AccountName": {
+                                            "type": "string",
+                                            "description": "Name of the customer corresponding to the AccountID."
+                                        },
+                                        "AccountID": {
+                                            "type": "integer",
+                                            "description": "AccountID of the customer."
+                                        },
+                                        "Reason": {
+                                            "type": "string",
+                                            "description": "The reason for opening status."
+                                        },
+                                        "Status": {
+                                            "type": "string",
+                                            "description": "The status of the AccountID provided."
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
